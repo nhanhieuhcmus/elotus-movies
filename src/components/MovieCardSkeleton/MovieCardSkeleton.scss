@@ -1,0 +1,32 @@
+.movie-card.skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.movie-img-skeleton {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  background-color: #333;
+  border-radius: 8px;
+}
+
+.title-skeleton {
+  width: 80%;
+  height: 1rem;
+  background-color: #333;
+  border-radius: 4px;
+}
+
+.flicker {
+  animation: flicker 1.5s infinite ease-in-out;
+}
+
+@keyframes flicker {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}

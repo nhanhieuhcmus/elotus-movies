@@ -1,54 +1,68 @@
-# React + TypeScript + Vite
+---
+created: 2025-06-18T00:46
+updated: 2025-06-18T01:16
+---
+# Project - _Movies_
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[](https://github.com/elotusteam/challenges/blob/main/frontend-2.md#project---movies)
 
-Currently, two official plugins are available:
+**Movies** is a movies app using the [The Movie Database API](https://developers.themoviedb.org/3).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Total time: 72 hours
+## Quick Start:
 
-## Expanding the ESLint configuration
+Because your time is extremely valuable, I’ve already hosted the website so you can conveniently view it directly without needing to know how to set it up.
+Check it here: https://elotus-movies.great-site.net
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## User Stories
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+[](https://github.com/elotusteam/challenges/blob/main/frontend-2.md#user-stories)
+
+Here are **required** features I've done:
+
+- [x]  User can view a list of movies currently playing in theaters. Poster images load asynchronously.
+- [x]  Add a tab bar for **Now Playing** and **Top Rated** movies.
+- [x]  Add a search bar.
+- [x]  User can view movie details by tapping on a cell.
+- [x]  User sees loading state while waiting for the API.
+- [x]  User sees an error message when there is a network error.
+- [x]  Simple responsive.
+
+Here are **optional** features I've done:
+
+- [ ]  Implement segmented control to switch between list view and grid view.
+- [x]  All images fade in.
+- [x]  Implement lazy load image.
+- [x]  Customize the highlight and selection effect of the cell.
+- [x]  Improve UX loading by skeleton loading.
+- [x]  Enhance responsive.
+
+The following **additional** features are implemented:
+Here are things I think that will improve our Movies application:
+- [x] Add "Load more" logic.
+- [x] Add scroll to top button.
+- [x] Add embed trailer/review video.
+- [x] Allow trigger search logic when hitting "Enter", instead of clicking "Search" button.
+- [ ] Add sorting and filtering logic.
+- [ ] Add language switcher function.
+- [ ] Add fallback placeholder thumbnail because the TMDB api does not return "poster_path" or "backdrop_path" either.
+- [ ] Integrate Redux to separate business logic out of view layer (following Clean Architecture that we have Core Business Logic, Interface Adapters, Application Layer).
+
+
+## How to install (if you want to review my code)
+
++ Make sure you're already installed Node.js 22.13.0
++ Clone this repo:
 ```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+git clone https://github.com/nhanhieuhcmus/elotus-movies.git
 ```
++ Install dependencies:
+```
+npm install
+```
++ Run this project:
+```
+npm run dev
+```
++ Now it should open in your default browser.
+
