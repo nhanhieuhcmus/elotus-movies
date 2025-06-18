@@ -1,6 +1,6 @@
 ---
 created: 2025-06-18T00:46
-updated: 2025-06-18T01:16
+updated: 2025-06-18T08:54
 ---
 # Project - _Movies_
 
@@ -43,9 +43,9 @@ Here are things I think that will improve our Movies application:
 - [x] Add scroll to top button.
 - [x] Add embed trailer/review video.
 - [x] Allow trigger search logic when hitting "Enter", instead of clicking "Search" button.
+- [x] Add fallback placeholder thumbnail because the TMDB api does not return "poster_path" or "backdrop_path" either.
 - [ ] Add sorting and filtering logic.
 - [ ] Add language switcher function.
-- [ ] Add fallback placeholder thumbnail because the TMDB api does not return "poster_path" or "backdrop_path" either.
 - [ ] Integrate Redux to separate business logic out of view layer (following Clean Architecture that we have Core Business Logic, Interface Adapters, Application Layer).
 
 
