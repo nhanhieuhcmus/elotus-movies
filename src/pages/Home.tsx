@@ -1,5 +1,6 @@
 import { useEffect, useState, useMemo } from "react";
 import { useLocation } from "react-router-dom";
+import useScrollTop from "../hooks/useScrollTop";
 import tmdbApi, { movieType } from "../api/tmdbApi";
 import { type Movie } from "../types/Movie";
 
@@ -16,6 +17,7 @@ import "./Home.scss";
 type Category = keyof typeof movieType;
 
 export default function Home() {
+  useScrollTop();
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
 
   const location = useLocation();
@@ -31,6 +33,7 @@ export default function Home() {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const [loading, setLoading] = useState(false);
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const loadMovies = async (
@@ -87,7 +90,8 @@ export default function Home() {
 
   const handleLoadMore = () => {
     if (currentPage < totalPages) {
-      loadMovies(currentPage + 1, category, searchQuery);
+      setIsLoadingMore(true);
+      loadMovies(currentPage + 1, category, searchQuery).finally(()=>setIsLoadingMore(false));
     }
   };
 
@@ -133,7 +137,7 @@ export default function Home() {
         </div>
       )}
 
-      {loading && currentPage > 1 && <Loading text="Loading more ..." />}
+      {isLoadingMore && <Loading text="Loading more ..." />}
       <ScrollTopButton />
     </div>
   );
