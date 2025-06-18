@@ -1,6 +1,6 @@
 ---
 created: 2025-06-18T00:46
-updated: 2025-06-18T08:54
+updated: 2025-06-18T09:55
 ---
 # Project - _Movies_
 
@@ -17,7 +17,7 @@ Check it here: https://elotus-movies.great-site.net
 ## User Stories
 
 [](https://github.com/elotusteam/challenges/blob/main/frontend-2.md#user-stories)
-
+(All features are completed!)
 Here are **required** features I've done:
 
 - [x]  User can view a list of movies currently playing in theaters. Poster images load asynchronously.
@@ -30,7 +30,7 @@ Here are **required** features I've done:
 
 Here are **optional** features I've done:
 
-- [ ]  Implement segmented control to switch between list view and grid view.
+- [x]  Implement segmented control to switch between list view and grid view.
 - [x]  All images fade in.
 - [x]  Implement lazy load image.
 - [x]  Customize the highlight and selection effect of the cell.
