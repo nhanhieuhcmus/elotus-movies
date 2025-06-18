@@ -1,0 +1,51 @@
+@use "../../scss/" as *;
+
+.movie-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  text-decoration: none;
+  border-radius: $border-radius;
+  padding: 1rem;
+  background: $body-bg;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: background 0.3s;
+
+  &:hover {
+    background: lighten($body-bg, 3%);
+  }
+
+  .movie-item-thumb {
+    width: 120px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: $border-radius;
+    flex-shrink: 0;
+  }
+
+  .movie-item-info {
+    flex: 1;
+
+    h3 {
+      margin: 0 0 0.5rem;
+      font-size: 2rem;
+    }
+
+    p {
+      font-size: 0.95rem;
+      color: $txt-color;
+      margin-bottom: 0.5rem;
+    }
+
+    .movie-vote-badge {
+      font-size: 0.8rem;
+      color: $txt-color;
+    }
+
+    .movie-release-date {
+      font-size: 0.8rem;
+      color: $txt-color;
+    }
+  }
+}

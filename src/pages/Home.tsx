@@ -6,14 +6,18 @@ import { type Movie } from "../types/Movie";
 import SearchBar from "../components/SearchBar/SearchBar";
 import ErrorBanner from "../components/ErrorBanner";
 import MovieGrid from "../components/MovieGrid/MovieGrid";
+import MovieList from "../components/MovieList/MovieList";
 import { OutlineButton } from "../components/Button/Button";
-import Loading from '../components/Loading/Loading';
+import Loading from "../components/Loading/Loading";
 
 import ScrollTopButton from "../components/ScrollTopButton/ScrollTopButton";
+import "./Home.scss";
 
 type Category = keyof typeof movieType;
 
 export default function Home() {
+  const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
+
   const location = useLocation();
   const categoryFromPath = useMemo(() => {
     if (location.pathname.includes("top-rated")) return "top_rated";
@@ -93,18 +97,32 @@ export default function Home() {
         className="fake-header-block"
         style={{ height: "8rem", visibility: "hidden" }}
       ></div>
-      <SearchBar
-        value={query}
-        onInputChange={setQuery}
-        onSearch={handleSearch}
-      />
-      
-      {loading && currentPage === 1 && <Loading text="Loading ..."/>}
+      <div>
+        <div className="view-toggle">
+          <SearchBar
+            value={query}
+            onInputChange={setQuery}
+            onSearch={handleSearch}
+          />
+          <OutlineButton
+            className="small"
+            onClick={() => setViewMode(viewMode === "grid" ? "list" : "grid")}
+          >
+            {viewMode === "grid" ? "List View" : "Grid View"}
+          </OutlineButton>
+        </div>
+      </div>
+
+      {loading && currentPage === 1 && <Loading text="Loading ..." />}
 
       {error && <ErrorBanner message={error} />}
 
       {/* {(!loading || (loading && currentPage < totalPages)) && <MovieGrid movies={movies} loading={loading}/> } */}
-      <MovieGrid movies={movies} loading={loading}/>
+      {viewMode === "grid" ? (
+        <MovieGrid movies={movies} loading={loading} />
+      ) : (
+        <MovieList movies={movies} />
+      )}
       {currentPage < totalPages && !loading && (
         <div style={{ textAlign: "center", margin: "1rem" }}>
           <div className="movie-grid__loadmore">
@@ -115,9 +133,7 @@ export default function Home() {
         </div>
       )}
 
-      {loading && currentPage > 1 && (
-        <Loading text="Loading more ..."/>
-      )}
+      {loading && currentPage > 1 && <Loading text="Loading more ..." />}
       <ScrollTopButton />
     </div>
   );
